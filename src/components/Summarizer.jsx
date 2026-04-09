@@ -14,7 +14,7 @@ export default function Summarizer() {
         setLoading(true);
 
         try {
-            const res = await fetch("http://localhost:5000/summarize", {
+            const res = await fetch("/api/summarize", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
