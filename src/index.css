@@ -1,5 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --page-bg: #f4efe7;
+  --panel-bg: rgba(255, 252, 248, 0.78);
+  --grid-color: rgba(148, 163, 184, 0.14);
+}
+
+.dark {
+  color-scheme: dark;
+  --page-bg: #09090b;
+  --panel-bg: rgba(17, 24, 39, 0.72);
+  --grid-color: rgba(255, 255, 255, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(251, 191, 36, 0.2), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.12), transparent 24%),
+    var(--page-bg);
+  color: #0f172a;
+  font-family: "Manrope", sans-serif;
+}
+
+a,
+button,
+textarea {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+.panel-surface {
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 92%);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.8;
+}
+
+.orb-one {
+  left: 5%;
+  top: 6%;
+  height: 240px;
+  width: 240px;
+  background: rgba(251, 191, 36, 0.16);
+}
+
+.orb-two {
+  right: 4%;
+  top: 28%;
+  height: 300px;
+  width: 300px;
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.font-serif {
+  font-family: "Instrument Serif", serif;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.28);
 }

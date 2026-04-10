@@ -1,75 +1,69 @@
-import { motion } from "framer-motion";
+const cards = [
+  {
+    title: "Quick signal extraction",
+    text: "MailAI is aimed at the moment when you need the gist of an email before deciding whether to reply, archive, or schedule follow-up.",
+  },
+  {
+    title: "A calmer reading surface",
+    text: "The refreshed interface uses warmer tones, softer cards, and stronger typography so the product feels deliberate instead of template-like.",
+  },
+  {
+    title: "Practical use cases",
+    text: "It works well for interview emails, client updates, team announcements, newsletters, and status-heavy conversations.",
+  },
+  {
+    title: "Room to grow",
+    text: "This layout can expand into saved summaries, inbox integrations, team spaces, or usage analytics without a redesign from scratch.",
+  },
+];
 
 export default function About() {
   return (
-    <div className="mt-16 px-6 flex justify-center">
-      
-      <div className="max-w-4xl w-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 p-10 rounded-3xl shadow-2xl">
+    <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="panel-surface rounded-[32px] border border-white/60 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] dark:border-white/10 sm:p-8">
+        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+          Product snapshot
+        </p>
+        <h2 className="mt-2 font-serif text-3xl text-slate-900 dark:text-white">
+          Built to shorten reading time without losing the point.
+        </h2>
 
-        {/* Title Animation */}
-        <motion.h1
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-8 text-center"
-        >
-          About MailAI
-        </motion.h1>
+        <p className="mt-6 text-base leading-8 text-slate-600 dark:text-slate-300">
+          The project takes raw email text, sends it to the backend summarizer,
+          and returns a concise paragraph. The UI refresh focuses on trust,
+          clarity, and rhythm so the experience feels closer to a real product
+          landing page and workspace.
+        </p>
 
-        {/* Quote Animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-r from-purple-500/30 to-pink-500/30 border border-white/20 p-6 rounded-2xl mb-8 text-center"
-        >
-          <p className="text-lg italic text-gray-100">
-            "Transform long emails into clear, concise summaries instantly using AI."
+        <div className="mt-8 rounded-[28px] bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(51,65,85,0.92))] p-6 text-white">
+          <p className="text-sm uppercase tracking-[0.24em] text-amber-200">
+            Design direction
           </p>
-        </motion.div>
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-
-          {[
-            {
-              title: "⚡ Fast & Efficient",
-              text: "MailAI quickly processes long email content and provides short summaries, saving valuable time."
-            },
-            {
-              title: "🤖 AI Powered",
-              text: "Powered by advanced AI models that understand context and extract key insights."
-            },
-            {
-              title: "🎯 User Friendly",
-              text: "Clean and simple UI designed for smooth user experience without complexity."
-            },
-            {
-              title: "🚀 Scalable SaaS",
-              text: "Built as a SaaS platform with future scope like authentication and dashboards."
-            }
-          ].map((card, index) => (
-            
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white/10 dark:bg-gray-800/50 p-6 rounded-2xl shadow-lg border border-white/20 cursor-pointer"
-            >
-              <h2 className="text-xl font-semibold mb-3">
-                {card.title}
-              </h2>
-              <p className="text-gray-200 text-sm">
-                "{card.text}"
-              </p>
-            </motion.div>
-          ))}
-
+          <p className="mt-4 text-lg leading-8 text-slate-100">
+            Editorial typography, warm neutrals, layered glass surfaces, and a
+            more balanced desktop-to-mobile layout.
+          </p>
         </div>
+      </section>
 
-      </div>
+      <section className="grid gap-4 sm:grid-cols-2">
+        {cards.map((card, index) => (
+          <article
+            key={card.title}
+            className="panel-surface rounded-[28px] border border-white/60 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition-transform duration-200 hover:-translate-y-1 dark:border-white/10"
+          >
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-sm font-semibold text-amber-800 dark:bg-amber-300/10 dark:text-amber-200">
+              0{index + 1}
+            </div>
+            <h3 className="mt-5 text-xl font-semibold text-slate-900 dark:text-white">
+              {card.title}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              {card.text}
+            </p>
+          </article>
+        ))}
+      </section>
     </div>
   );
 }
